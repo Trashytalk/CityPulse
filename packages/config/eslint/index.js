@@ -9,8 +9,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
     'prettier',
   ],
   rules: {
@@ -28,7 +26,7 @@ module.exports = {
       { prefer: 'type-imports' },
     ],
 
-    // Import
+    // Import - disable resolver-dependent rules
     'import/order': [
       'error',
       {
@@ -45,18 +43,16 @@ module.exports = {
       },
     ],
     'import/no-duplicates': 'error',
-    'import/no-unresolved': 'off', // TypeScript handles this
+    'import/no-unresolved': 'off',
+    'import/namespace': 'off',
+    'import/default': 'off',
+    'import/export': 'off',
+    'import/named': 'off',
 
     // General
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'prefer-const': 'error',
     'no-var': 'error',
-  },
-  settings: {
-    'import/resolver': {
-      typescript: true,
-      node: true,
-    },
   },
   ignorePatterns: [
     'node_modules/',
