@@ -1,11 +1,13 @@
 // apps/api/src/jobs/sendNotification.ts
-import type { Job } from 'bullmq';
-import type { NotificationJob } from '../lib/queue';
-import { Expo, ExpoPushMessage } from 'expo-server-sdk';
-import { sendSMS } from '../lib/sms';
 import { db } from '@citypulse/db';
 import { users, userProfiles } from '@citypulse/db/schema';
+import type { Job } from 'bullmq';
 import { eq } from 'drizzle-orm';
+import type { ExpoPushMessage } from 'expo-server-sdk';
+import { Expo } from 'expo-server-sdk';
+
+import type { NotificationJob } from '../lib/queue';
+import { sendSMS } from '../lib/sms';
 import { logger } from '../middleware/logger';
 
 const expo = new Expo();

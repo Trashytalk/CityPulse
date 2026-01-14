@@ -1,8 +1,9 @@
 // apps/api/src/lib/lucia.ts
-import { Lucia, TimeSpan } from 'lucia';
-import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
 import { db } from '@citypulse/db';
 import { authSessions, users } from '@citypulse/db/schema';
+import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
+import { Lucia, TimeSpan } from 'lucia';
+
 import { env } from './env';
 
 const adapter = new DrizzlePostgreSQLAdapter(db, authSessions, users);

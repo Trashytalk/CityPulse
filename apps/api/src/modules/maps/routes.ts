@@ -1,7 +1,9 @@
 // apps/api/src/modules/maps/routes.ts
-import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
+import { Hono } from 'hono';
+
 import { requireAuth, optionalAuth } from '../../middleware/auth';
+
 import { mapsService } from './service';
 import * as v from './validators';
 

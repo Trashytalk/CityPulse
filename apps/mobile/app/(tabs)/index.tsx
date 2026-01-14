@@ -1,9 +1,10 @@
 // apps/mobile/app/(tabs)/index.tsx
-import { View, Text, ScrollView, Pressable, RefreshControl } from 'react-native';
-import { useRouter } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import { Radio, Camera, Wifi, ChevronRight, Flame } from 'lucide-react-native';
+import { View, Text, ScrollView, Pressable, RefreshControl } from 'react-native';
+
 import { api } from '../../src/services/api';
 import { useAuthStore } from '../../src/stores/auth';
 

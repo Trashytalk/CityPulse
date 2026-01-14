@@ -2,9 +2,11 @@
 import type { Context, ErrorHandler } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { ZodError } from 'zod';
-import { AppError, ERROR_CODES } from '../lib/errors';
-import { getLogger } from './logger';
+
 import { env } from '../lib/env';
+import { AppError, ERROR_CODES } from '../lib/errors';
+
+import { getLogger } from './logger';
 
 /**
  * Global error handler

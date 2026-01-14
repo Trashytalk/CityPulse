@@ -1,7 +1,7 @@
 // apps/mobile/src/stores/auth.ts
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface User {
   id: string;
@@ -43,7 +43,7 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       user: null,
       accessToken: null,
       refreshToken: null,

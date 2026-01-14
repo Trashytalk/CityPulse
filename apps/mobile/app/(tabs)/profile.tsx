@@ -1,11 +1,12 @@
 // apps/mobile/app/(tabs)/profile.tsx
-import { View, Text, ScrollView, Pressable, Image, Alert } from 'react-native';
-import { useRouter } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
+import { useRouter } from 'expo-router';
 import { 
   Award, Wallet, Settings, ChevronRight, LogOut, 
   Flame, Share2, Bell, HelpCircle 
 } from 'lucide-react-native';
+import { View, Text, ScrollView, Pressable, Image, Alert } from 'react-native';
+
 import { api } from '../../src/services/api';
 import { useAuthStore } from '../../src/stores/auth';
 

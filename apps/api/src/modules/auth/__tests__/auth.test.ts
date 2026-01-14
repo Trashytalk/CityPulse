@@ -1,9 +1,12 @@
 // apps/api/src/modules/auth/__tests__/auth.test.ts
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { Hono } from 'hono';
-import { authRoutes } from '../routes';
 import { cleanDatabase } from '@citypulse/db/test';
+import { Hono } from 'hono';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+
 import * as smsLib from '../../../lib/sms';
+import { authRoutes } from '../routes';
+
+
 
 // Mock SMS sending
 vi.mock('../../../lib/sms', () => ({

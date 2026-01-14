@@ -1,6 +1,8 @@
 // apps/api/src/lib/otp.ts
-import { authenticator } from 'otplib';
 import { createHash } from 'crypto';
+
+import { authenticator } from 'otplib';
+
 import { env } from './env';
 import { redis } from './redis';
 

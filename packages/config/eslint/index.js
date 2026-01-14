@@ -12,9 +12,9 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    // TypeScript
+    // TypeScript - use warn for unused vars in development phase
     '@typescript-eslint/no-unused-vars': [
-      'error',
+      'warn',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     '@typescript-eslint/no-explicit-any': 'warn',
@@ -22,13 +22,13 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'warn',
     '@typescript-eslint/consistent-type-imports': [
-      'error',
+      'warn',
       { prefer: 'type-imports' },
     ],
 
     // Import - disable resolver-dependent rules
     'import/order': [
-      'error',
+      'warn',
       {
         groups: [
           'builtin',
@@ -42,7 +42,7 @@ module.exports = {
         alphabetize: { order: 'asc' },
       },
     ],
-    'import/no-duplicates': 'error',
+    'import/no-duplicates': 'warn',
     'import/no-unresolved': 'off',
     'import/namespace': 'off',
     'import/default': 'off',

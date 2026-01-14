@@ -1,7 +1,4 @@
 // apps/api/src/jobs/calculateEarnings.ts
-import type { Job } from 'bullmq';
-import type { EarningsCalculationJob, NotificationJob } from '../lib/queue';
-import { notificationQueue, addJob } from '../lib/queue';
 import { db } from '@citypulse/db';
 import { 
   collectionSessions, 
@@ -9,12 +6,16 @@ import {
   transactions,
   userProgression,
 } from '@citypulse/db/schema';
-import { eq, sql } from 'drizzle-orm';
 import { 
   EARNING_RATES, 
   XP_REWARDS,
   QUALITY_THRESHOLDS,
 } from '@citypulse/shared/constants';
+import type { Job } from 'bullmq';
+import { eq, sql } from 'drizzle-orm';
+
+import type { EarningsCalculationJob, NotificationJob } from '../lib/queue';
+import { notificationQueue, addJob } from '../lib/queue';
 import { logger } from '../middleware/logger';
 
 /**
@@ -27,11 +28,12 @@ export async function calculateEarningsJob(job: Job<EarningsCalculationJob>) {
   log.info({ processingResult }, 'Calculating earnings');
   
   const { 
-    framesProcessed, 
-    entitiesDetected, 
+    // These are available for future use in advanced earnings calculations
+    framesProcessed: _framesProcessed, 
+    entitiesDetected: _entitiesDetected, 
     qualityScore, 
     distanceMeters,
-    durationSeconds,
+    durationSeconds: _durationSeconds,
   } = processingResult;
   
   // Get session mode
@@ -63,7 +65,7 @@ export async function calculateEarningsJob(job: Job<EarningsCalculationJob>) {
       baseRate = EARNING_RATES.PASSIVE_PER_KM;
   }
   
-  let baseCash = Math.floor(distanceKm * baseRate);
+  const baseCash = Math.floor(distanceKm * baseRate);
   
   // Apply quality multiplier
   let qualityMultiplier = EARNING_RATES.QUALITY_AVERAGE;

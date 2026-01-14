@@ -1,4 +1,6 @@
 // packages/db/src/test/utils.ts
+import { nanoid } from 'nanoid';
+
 import { db } from '../index';
 import { 
   users, 
@@ -8,7 +10,6 @@ import {
   collectionSessions,
   wifiNetworks,
 } from '../schema';
-import { nanoid } from 'nanoid';
 
 /**
  * Create a test user with all related records

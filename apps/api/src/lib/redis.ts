@@ -1,5 +1,6 @@
 // apps/api/src/lib/redis.ts
 import { Redis } from 'ioredis';
+
 import { env } from './env';
 
 // Create Redis client

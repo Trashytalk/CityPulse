@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@citypulse/typescript-config": "workspace:*",
+    "@types/geojson": "^7946.0.14",
     "tsup": "^8.0.0",
     "typescript": "^5.3.0"
   }

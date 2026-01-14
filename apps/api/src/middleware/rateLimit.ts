@@ -1,8 +1,9 @@
 // apps/api/src/middleware/rateLimit.ts
 import type { Context, Next } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import { checkRateLimit } from '../lib/redis';
+
 import { env } from '../lib/env';
+import { checkRateLimit } from '../lib/redis';
 
 interface RateLimitOptions {
   windowMs?: number;

@@ -1,19 +1,21 @@
 // apps/api/src/modules/collection/__tests__/collection.test.ts
-import { describe, it, expect, beforeEach } from 'vitest';
-import { Hono } from 'hono';
-import { collectionRoutes } from '../routes';
 import { cleanDatabase, createTestUser } from '@citypulse/db/test';
+import { Hono } from 'hono';
+import { describe, it, expect, beforeEach } from 'vitest';
+
+import { collectionRoutes } from '../routes';
+
 
 const app = new Hono().route('/collection', collectionRoutes);
 
 describe('Collection Module', () => {
   let authHeader: string;
-  let userId: string;
+  let _userId: string;
 
   beforeEach(async () => {
     await cleanDatabase();
     const { user, token } = await createTestUser();
-    userId = user.id;
+    _userId = user.id;
     authHeader = `Bearer ${token}`;
   });
 

@@ -1,5 +1,6 @@
 // apps/api/src/middleware/logger.ts
 import type { Context, Next } from 'hono';
+
 import { env } from '../lib/env';
 
 // Simple logger interface

@@ -1,14 +1,15 @@
 // apps/api/src/jobs/processWithdrawal.ts
-import type { Job } from 'bullmq';
-import type { WithdrawalJob, NotificationJob } from '../lib/queue';
-import { notificationQueue, addJob } from '../lib/queue';
 import { db } from '@citypulse/db';
 import { withdrawals, wallets, payoutMethods, users } from '@citypulse/db/schema';
+import type { Job } from 'bullmq';
 import { eq } from 'drizzle-orm';
+
 import { decrypt } from '../lib/encryption';
+import { env } from '../lib/env';
+import type { WithdrawalJob, NotificationJob } from '../lib/queue';
+import { notificationQueue, addJob } from '../lib/queue';
 import { sendWithdrawalSMS } from '../lib/sms';
 import { logger } from '../middleware/logger';
-import { env } from '../lib/env';
 
 /**
  * Process a withdrawal request
@@ -155,7 +156,7 @@ export async function processWithdrawalJob(job: Job<WithdrawalJob>) {
 /**
  * Process GCash payout
  */
-async function processGCashPayout(phone: string, amount: number): Promise<string> {
+async function processGCashPayout(_phone: string, _amount: number): Promise<string> {
   if (env.NODE_ENV !== 'production') {
     // Mock for development
     logger.warn('Using mock GCash payout');
@@ -169,7 +170,7 @@ async function processGCashPayout(phone: string, amount: number): Promise<string
 /**
  * Process GrabPay payout
  */
-async function processGrabPayPayout(phone: string, amount: number): Promise<string> {
+async function processGrabPayPayout(_phone: string, _amount: number): Promise<string> {
   if (env.NODE_ENV !== 'production') {
     logger.warn('Using mock GrabPay payout');
     return `MOCK_GRABPAY_${Date.now()}`;
@@ -181,7 +182,7 @@ async function processGrabPayPayout(phone: string, amount: number): Promise<stri
 /**
  * Process bank transfer
  */
-async function processBankTransfer(accountNumber: string, amount: number): Promise<string> {
+async function processBankTransfer(_accountNumber: string, _amount: number): Promise<string> {
   if (env.NODE_ENV !== 'production') {
     logger.warn('Using mock bank transfer');
     return `MOCK_BANK_${Date.now()}`;

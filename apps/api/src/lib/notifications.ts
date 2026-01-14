@@ -1,5 +1,7 @@
 // apps/api/src/lib/notifications.ts
-import { Expo, ExpoPushMessage, ExpoPushTicket } from 'expo-server-sdk';
+import type { ExpoPushMessage, ExpoPushTicket } from 'expo-server-sdk';
+import { Expo } from 'expo-server-sdk';
+
 import { logger } from '../middleware/logger';
 
 const expo = new Expo();

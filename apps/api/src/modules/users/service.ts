@@ -1,6 +1,7 @@
 // apps/api/src/modules/users/service.ts
-import { usersRepository } from './repository';
 import { AppError, ERROR_CODES } from '../../lib/errors';
+
+import { usersRepository } from './repository';
 import type { UpdateProfileInput, ActivityQuery } from './validators';
 
 export const usersService = {

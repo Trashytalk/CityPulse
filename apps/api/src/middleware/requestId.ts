@@ -1,6 +1,7 @@
 // apps/api/src/middleware/requestId.ts
-import type { Context, Next } from 'hono';
 import { randomUUID } from 'crypto';
+
+import type { Context, Next } from 'hono';
 
 // Header name for request ID
 const REQUEST_ID_HEADER = 'X-Request-ID';

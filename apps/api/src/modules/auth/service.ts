@@ -1,11 +1,12 @@
 // apps/api/src/modules/auth/service.ts
-import { authRepository } from './repository';
-import { generateOTP, verifyOTP, isDevPhone, generateDevOTP } from '../../lib/otp';
-import { generateTokenPair, verifyToken } from '../../lib/jwt';
-import { lucia, invalidateSession, invalidateAllUserSessions } from '../../lib/lucia';
-import { sendOTPSMS } from '../../lib/sms';
-import { AppError, ERROR_CODES } from '../../lib/errors';
 import { env } from '../../lib/env';
+import { AppError, ERROR_CODES } from '../../lib/errors';
+import { generateTokenPair, verifyToken } from '../../lib/jwt';
+import { invalidateSession, invalidateAllUserSessions } from '../../lib/lucia';
+import { generateOTP, verifyOTP, isDevPhone, generateDevOTP } from '../../lib/otp';
+import { sendOTPSMS } from '../../lib/sms';
+
+import { authRepository } from './repository';
 
 interface DeviceInfo {
   deviceId?: string;
@@ -36,6 +37,7 @@ export const authService = {
     
     // Send SMS (or log in development)
     if (env.SMS_PROVIDER === 'console' || isDevPhone(phone)) {
+      // eslint-disable-next-line no-console
       console.log(`[OTP] ${phone}: ${otp}`);
     } else {
       await sendOTPSMS(phone, otp);
@@ -50,7 +52,7 @@ export const authService = {
   // ==========================================================================
   // VERIFY OTP
   // ==========================================================================
-  async verifyOtp(phone: string, code: string, deviceInfo: DeviceInfo) {
+  async verifyOtp(phone: string, code: string, _deviceInfo: DeviceInfo) {
     // Verify OTP
     const isValid = await verifyOTP(phone, code);
     

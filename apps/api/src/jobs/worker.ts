@@ -1,10 +1,12 @@
 // apps/api/src/jobs/worker.ts
 import { createWorker, QUEUES } from '../lib/queue';
-import { processSessionJob } from './processSession';
-import { calculateEarningsJob } from './calculateEarnings';
-import { sendNotificationJob } from './sendNotification';
-import { processWithdrawalJob } from './processWithdrawal';
 import { logger } from '../middleware/logger';
+
+import { calculateEarningsJob } from './calculateEarnings';
+import { processSessionJob } from './processSession';
+import { processWithdrawalJob } from './processWithdrawal';
+import { sendNotificationJob } from './sendNotification';
+
 
 const log = logger.child({ module: 'worker' });
 

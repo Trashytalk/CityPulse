@@ -1,7 +1,9 @@
 // apps/api/src/modules/users/routes.ts
-import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
+import { Hono } from 'hono';
+
 import { requireAuth, optionalAuth } from '../../middleware/auth';
+
 import { usersService } from './service';
 import * as v from './validators';
 

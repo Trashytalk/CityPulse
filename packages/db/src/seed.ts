@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 // packages/db/src/seed.ts
-import { db } from './index';
+import { nanoid } from 'nanoid';
+
 import {
   users,
   userProfiles,
@@ -9,7 +11,8 @@ import {
   challenges,
   wifiNetworks,
 } from './schema';
-import { nanoid } from 'nanoid';
+
+import { db } from './index';
 
 // Achievement definitions
 const ACHIEVEMENT_DEFINITIONS = {

@@ -1,5 +1,6 @@
 // apps/api/src/lib/queue.ts
-import { Queue, Worker, Job } from 'bullmq';
+import type { Job } from 'bullmq';
+import { Queue, Worker } from 'bullmq';
 
 // Queue connection options (reuse Redis connection)
 const connection = {

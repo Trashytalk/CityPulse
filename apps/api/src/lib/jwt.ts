@@ -1,5 +1,6 @@
 // apps/api/src/lib/jwt.ts
 import { SignJWT, jwtVerify, type JWTPayload } from 'jose';
+
 import { env } from './env';
 
 const secret = new TextEncoder().encode(env.JWT_SECRET);

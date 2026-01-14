@@ -1,10 +1,11 @@
 // apps/api/src/middleware/auth.ts
-import type { Context, Next } from 'hono';
-import { HTTPException } from 'hono/http-exception';
-import { verifyToken } from '../lib/jwt';
 import { db } from '@citypulse/db';
 import { users } from '@citypulse/db/schema';
 import { eq } from 'drizzle-orm';
+import type { Context, Next } from 'hono';
+import { HTTPException } from 'hono/http-exception';
+
+import { verifyToken } from '../lib/jwt';
 
 // Extend Hono context with user
 declare module 'hono' {

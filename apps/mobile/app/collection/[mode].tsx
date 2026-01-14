@@ -1,19 +1,22 @@
 // apps/mobile/app/collection/[mode].tsx
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { View, Text, Pressable, Alert, AppState, AppStateStatus } from 'react-native';
-import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMutation } from '@tanstack/react-query';
 import { Camera, CameraView } from 'expo-camera';
-import * as Location from 'expo-location';
 import { LinearGradient } from 'expo-linear-gradient';
+import type * as Location from 'expo-location';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { 
   Play, Pause, Square, Camera as CameraIcon, 
   MapPin, Navigation, Clock 
 } from 'lucide-react-native';
-import { useCollectionStore, CollectionMode } from '../../src/stores/collection';
-import { locationService } from '../../src/services/location';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { View, Text, Pressable, Alert, AppState } from 'react-native';
+import type { AppStateStatus } from 'react-native';
+
 import { api } from '../../src/services/api';
+import { locationService } from '../../src/services/location';
 import { offlineService } from '../../src/services/offline';
+import { useCollectionStore } from '../../src/stores/collection';
+import type { CollectionMode } from '../../src/stores/collection';
 
 export default function CollectionScreen() {
   const { mode } = useLocalSearchParams<{ mode: CollectionMode }>();

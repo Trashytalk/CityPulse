@@ -2,6 +2,7 @@
 import { db } from '@citypulse/db';
 import { wifiNetworks, wifiUnlocks, wifiContributions } from '@citypulse/db/schema';
 import { eq, and, desc, sql, or } from 'drizzle-orm';
+
 import type { NearbyQuery, ContributionsQuery } from './validators';
 
 export const wifiRepository = {

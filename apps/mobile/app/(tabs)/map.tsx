@@ -1,9 +1,9 @@
 // apps/mobile/app/(tabs)/map.tsx
+import * as Location from 'expo-location';
+import { Layers, Navigation, ZoomIn, ZoomOut } from 'lucide-react-native';
 import { useState, useEffect } from 'react';
 import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import MapView, { UrlTile, PROVIDER_GOOGLE } from 'react-native-maps';
-import * as Location from 'expo-location';
-import { Layers, Navigation, ZoomIn, ZoomOut } from 'lucide-react-native';
 
 export default function MapScreen() {
   const [location, setLocation] = useState<Location.LocationObject | null>(null);

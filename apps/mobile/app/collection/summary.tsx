@@ -1,16 +1,18 @@
 // apps/mobile/app/collection/summary.tsx
-import { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
-import { useRouter } from 'expo-router';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import { 
   CheckCircle, Clock, Navigation, MapPin, Camera,
   Coins, Star, Trophy, ChevronRight 
 } from 'lucide-react-native';
-import { useCollectionStore, CollectionSession } from '../../src/stores/collection';
+import { useEffect, useState } from 'react';
+import { View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
+
 import { api } from '../../src/services/api';
 import { offlineService } from '../../src/services/offline';
+import type { CollectionSession } from '../../src/stores/collection';
+import { useCollectionStore } from '../../src/stores/collection';
 
 interface SessionResult {
   pointsProcessed: number;

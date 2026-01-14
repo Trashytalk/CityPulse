@@ -1,6 +1,7 @@
 // apps/api/src/lib/encryption.ts
 import { createCipheriv, createDecipheriv, randomBytes, scrypt, createHash } from 'crypto';
 import { promisify } from 'util';
+
 import { env } from './env';
 
 const scryptAsync = promisify(scrypt);

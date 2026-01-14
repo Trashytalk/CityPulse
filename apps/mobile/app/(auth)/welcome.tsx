@@ -1,8 +1,8 @@
 // apps/mobile/app/(auth)/welcome.tsx
-import { View, Text, Pressable, Image, Dimensions } from 'react-native';
-import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import { MapPin, Wifi, Wallet } from 'lucide-react-native';
+import { View, Text, Pressable, Image, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 

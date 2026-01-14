@@ -1,8 +1,8 @@
 // apps/mobile/services/notifications.ts
-import * as Notifications from 'expo-notifications';
-import * as Device from 'expo-device';
-import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Device from 'expo-device';
+import * as Notifications from 'expo-notifications';
+import { Platform } from 'react-native';
 
 const PUSH_TOKEN_KEY = 'citypulse_push_token';
 

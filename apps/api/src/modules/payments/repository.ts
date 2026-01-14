@@ -2,6 +2,7 @@
 import { db } from '@citypulse/db';
 import { wallets, transactions, payoutMethods, withdrawals } from '@citypulse/db/schema';
 import { eq, and, desc, sql, gte, lte } from 'drizzle-orm';
+
 import type { TransactionsQuery, WithdrawalsQuery } from './validators';
 
 export const paymentsRepository = {
@@ -415,11 +416,12 @@ function getPeriodStart(period: string): Date | null {
   switch (period) {
     case 'today':
       return new Date(now.setHours(0, 0, 0, 0));
-    case 'week':
+    case 'week': {
       const weekStart = new Date(now);
       weekStart.setDate(weekStart.getDate() - weekStart.getDay());
       weekStart.setHours(0, 0, 0, 0);
       return weekStart;
+    }
     case 'month':
       return new Date(now.getFullYear(), now.getMonth(), 1);
     case 'year':

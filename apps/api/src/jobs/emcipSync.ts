@@ -1,10 +1,11 @@
 // apps/api/src/jobs/emcipSync.ts
-import type { Job } from 'bullmq';
 import { db } from '@citypulse/db';
 import { entities } from '@citypulse/db/schema';
+import type { Job } from 'bullmq';
 import { gte, eq } from 'drizzle-orm';
-import { logger } from '../middleware/logger';
+
 import { env } from '../lib/env';
+import { logger } from '../middleware/logger';
 
 interface EMCIPEntity {
   source: 'citypulse';

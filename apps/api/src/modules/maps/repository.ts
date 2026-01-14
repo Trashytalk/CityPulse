@@ -2,6 +2,7 @@
 import { db } from '@citypulse/db';
 import { entities, frames } from '@citypulse/db/schema';
 import { eq, and, gte, lte, desc, asc, sql } from 'drizzle-orm';
+
 import type {
   CoverageQuery,
   CoverageStatsQuery,
@@ -92,18 +93,18 @@ export const mapsRepository = {
   // ==========================================================================
   // VECTOR TILES
   // ==========================================================================
-  async getCachedTile(z: number, x: number, y: number): Promise<Buffer | null> {
+  async getCachedTile(_z: number, _x: number, _y: number): Promise<Buffer | null> {
     // In production, check Redis/R2 for cached tiles
     return null;
   },
 
-  async generateVectorTile(z: number, x: number, y: number): Promise<Buffer> {
+  async generateVectorTile(_z: number, _x: number, _y: number): Promise<Buffer> {
     // In production, generate MVT tiles from PostGIS
     // For now, return empty buffer
     return Buffer.from([]);
   },
 
-  async cacheTile(z: number, x: number, y: number, tile: Buffer): Promise<void> {
+  async cacheTile(_z: number, _x: number, _y: number, _tile: Buffer): Promise<void> {
     // In production, cache to Redis/R2
   },
 
@@ -222,7 +223,7 @@ export const mapsRepository = {
   // ==========================================================================
   // BOUNTIES
   // ==========================================================================
-  async getNearbyBounties(lat: number, lng: number, radius: number) {
+  async getNearbyBounties(_lat: number, _lng: number, _radius: number) {
     // Mock implementation - would query bounties table
     return [];
   },

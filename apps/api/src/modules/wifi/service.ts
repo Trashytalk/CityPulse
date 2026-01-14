@@ -1,8 +1,9 @@
 // apps/api/src/modules/wifi/service.ts
-import { wifiRepository } from './repository';
-import { AppError, ERROR_CODES } from '../../lib/errors';
 import { encrypt, decrypt } from '../../lib/encryption';
+import { AppError, ERROR_CODES } from '../../lib/errors';
 import { calculateH3Index } from '../../lib/geo';
+
+import { wifiRepository } from './repository';
 import type { NearbyQuery, ContributeInput, ContributionsQuery } from './validators';
 
 const DEFAULT_UNLOCK_COST = 50; // Credits

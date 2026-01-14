@@ -5,6 +5,8 @@
  * @deviations None
  */
 
+import type { LineString } from 'geojson';
+
 export type CollectionMode = 'passive' | 'dashcam' | 'explore';
 export type SessionStatus = 'active' | 'completed' | 'processing' | 'processed' | 'failed';
 
@@ -22,7 +24,7 @@ export interface CollectionSession {
   earnedCash: number;
   earnedCredits: number;
   earnedXp: number;
-  routeGeometry?: GeoJSON.LineString | null;
+  routeGeometry?: LineString | null;
   coverageCells: string[];
   clientMetrics?: ClientMetrics | null;
   processingMetrics?: ProcessingMetrics | null;

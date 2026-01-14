@@ -1,12 +1,13 @@
 // apps/api/src/jobs/processSession.ts
-import type { Job } from 'bullmq';
-import type { SessionProcessingJob, EarningsCalculationJob } from '../lib/queue';
-import { earningsQueue, addJob } from '../lib/queue';
 import { db } from '@citypulse/db';
 import { collectionSessions } from '@citypulse/db/schema';
+import type { Job } from 'bullmq';
 import { eq } from 'drizzle-orm';
-import { logger } from '../middleware/logger';
+
 import { env } from '../lib/env';
+import type { SessionProcessingJob, EarningsCalculationJob } from '../lib/queue';
+import { earningsQueue, addJob } from '../lib/queue';
+import { logger } from '../middleware/logger';
 
 /**
  * Process a collection session through ML pipeline

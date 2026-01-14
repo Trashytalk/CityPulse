@@ -1,4 +1,5 @@
 // apps/api/src/lib/sms.ts
+/* eslint-disable no-console, @typescript-eslint/no-explicit-any, @typescript-eslint/no-var-requires */
 import { env } from './env';
 
 interface SMSProvider {

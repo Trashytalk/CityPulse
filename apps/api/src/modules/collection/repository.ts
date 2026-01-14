@@ -1,7 +1,8 @@
 // apps/api/src/modules/collection/repository.ts
 import { db } from '@citypulse/db';
-import { collectionSessions, frames, networkScans, entities } from '@citypulse/db/schema';
+import { collectionSessions, frames, networkScans, entities as _entities } from '@citypulse/db/schema';
 import { eq, and, desc, asc, sql } from 'drizzle-orm';
+
 import type { ListSessionsQuery } from './validators';
 
 export const collectionRepository = {

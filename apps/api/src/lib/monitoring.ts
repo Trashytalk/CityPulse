@@ -1,7 +1,9 @@
 // apps/api/src/lib/monitoring.ts
 import * as Sentry from '@sentry/node';
-import { env } from './env';
+
 import { logger } from '../middleware/logger';
+
+import { env } from './env';
 
 // Initialize Sentry if DSN is configured
 if (env.SENTRY_DSN) {

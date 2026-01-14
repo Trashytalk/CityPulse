@@ -1,9 +1,11 @@
 // apps/api/src/modules/auth/routes.ts
-import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
-import { authService } from './service';
-import { rateLimiters } from '../../middleware/rateLimit';
+import { Hono } from 'hono';
+
 import { requireAuth } from '../../middleware/auth';
+import { rateLimiters } from '../../middleware/rateLimit';
+
+import { authService } from './service';
 import * as v from './validators';
 
 export const authRoutes = new Hono();

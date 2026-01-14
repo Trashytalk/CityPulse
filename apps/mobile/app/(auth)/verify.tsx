@@ -1,9 +1,10 @@
 // apps/mobile/app/(auth)/verify.tsx
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'expo-router';
+import { ChevronLeft } from 'lucide-react-native';
 import { useState, useRef, useEffect } from 'react';
 import { View, Text, TextInput, Pressable, KeyboardAvoidingView, Platform } from 'react-native';
-import { useRouter } from 'expo-router';
-import { useMutation } from '@tanstack/react-query';
-import { ChevronLeft } from 'lucide-react-native';
+
 import { api } from '../../src/services/api';
 import { useAuthStore } from '../../src/stores/auth';
 

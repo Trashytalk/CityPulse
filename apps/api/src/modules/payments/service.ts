@@ -1,6 +1,7 @@
 // apps/api/src/modules/payments/service.ts
-import { paymentsRepository } from './repository';
 import { AppError, ERROR_CODES } from '../../lib/errors';
+
+import { paymentsRepository } from './repository';
 import type {
   TransactionsQuery,
   EarningsQuery,

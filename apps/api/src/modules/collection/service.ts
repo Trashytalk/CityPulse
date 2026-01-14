@@ -1,7 +1,8 @@
 // apps/api/src/modules/collection/service.ts
-import { collectionRepository } from './repository';
 import { AppError, ERROR_CODES } from '../../lib/errors';
 import { calculateH3Index } from '../../lib/geo';
+
+import { collectionRepository } from './repository';
 import type {
   CreateSessionInput,
   ListSessionsQuery,

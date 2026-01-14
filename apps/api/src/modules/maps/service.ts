@@ -1,7 +1,8 @@
 // apps/api/src/modules/maps/service.ts
-import { mapsRepository } from './repository';
-import { getSignedDownloadUrl } from '../../lib/s3';
 import { AppError, ERROR_CODES } from '../../lib/errors';
+import { getSignedDownloadUrl } from '../../lib/s3';
+
+import { mapsRepository } from './repository';
 import type {
   CoverageQuery,
   CoverageStatsQuery,

@@ -1,7 +1,9 @@
 // apps/api/src/modules/collection/routes.ts
-import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
+import { Hono } from 'hono';
+
 import { requireAuth } from '../../middleware/auth';
+
 import { collectionService } from './service';
 import * as v from './validators';
 

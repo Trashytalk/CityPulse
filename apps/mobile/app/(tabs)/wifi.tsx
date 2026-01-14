@@ -1,10 +1,11 @@
 // apps/mobile/app/(tabs)/wifi.tsx
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import * as Clipboard from 'expo-clipboard';
+import * as Location from 'expo-location';
+import { Wifi, Lock, Unlock, Copy, RefreshCw, MapPin } from 'lucide-react-native';
 import { useState, useEffect } from 'react';
 import { View, Text, FlatList, Pressable, ActivityIndicator, Alert } from 'react-native';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import * as Location from 'expo-location';
-import * as Clipboard from 'expo-clipboard';
-import { Wifi, Lock, Unlock, Copy, RefreshCw, MapPin } from 'lucide-react-native';
+
 import { api } from '../../src/services/api';
 import { useAuthStore } from '../../src/stores/auth';
 

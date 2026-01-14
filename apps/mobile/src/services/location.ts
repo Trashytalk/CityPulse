@@ -1,6 +1,7 @@
 // apps/mobile/src/services/location.ts
 import * as Location from 'expo-location';
 import * as TaskManager from 'expo-task-manager';
+
 import { useCollectionStore } from '../stores/collection';
 
 const LOCATION_TASK = 'citypulse-location-tracking';

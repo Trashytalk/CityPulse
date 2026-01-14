@@ -1,6 +1,6 @@
 // apps/mobile/src/stores/collection.ts
+import type * as Location from 'expo-location';
 import { create } from 'zustand';
-import * as Location from 'expo-location';
 
 export type CollectionMode = 'passive' | 'dashcam';
 

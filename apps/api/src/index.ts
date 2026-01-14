@@ -3,20 +3,18 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
 
-import { requestId } from './middleware/requestId';
-import { requestLogger, logger } from './middleware/logger';
-import { errorHandler, notFoundHandler } from './middleware/errorHandler';
-import { rateLimiters } from './middleware/rateLimit';
 import { env } from './lib/env';
-
-// Import routes
+import { errorHandler, notFoundHandler } from './middleware/errorHandler';
+import { requestLogger, logger } from './middleware/logger';
+import { rateLimiters } from './middleware/rateLimit';
+import { requestId } from './middleware/requestId';
 import { authRoutes } from './modules/auth/routes';
-import { userRoutes } from './modules/users/routes';
 import { collectionRoutes } from './modules/collection/routes';
 import { gamificationRoutes } from './modules/gamification/routes';
-import { wifiRoutes } from './modules/wifi/routes';
-import { paymentRoutes } from './modules/payments/routes';
 import { mapRoutes } from './modules/maps/routes';
+import { paymentRoutes } from './modules/payments/routes';
+import { userRoutes } from './modules/users/routes';
+import { wifiRoutes } from './modules/wifi/routes';
 
 const app = new Hono();
 

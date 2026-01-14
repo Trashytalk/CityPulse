@@ -1,6 +1,7 @@
 // apps/api/src/modules/gamification/service.ts
-import { gamificationRepository } from './repository';
 import { AppError, ERROR_CODES } from '../../lib/errors';
+
+import { gamificationRepository } from './repository';
 import type { ChallengesQuery, LeaderboardQuery } from './validators';
 
 // XP calculation helpers
