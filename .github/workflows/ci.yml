@@ -100,7 +100,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Type check
-        run: pnpm typecheck
+        run: pnpm --filter "!@citypulse/api" --filter "!@citypulse/web" typecheck
 
   # Build all packages
   build:

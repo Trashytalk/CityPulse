@@ -31,6 +31,8 @@ export async function createTestUser(options: {
     phoneVerified: true,
   }).returning();
 
+  if (!user) throw new Error('Failed to create test user');
+
   await db.insert(userProfiles).values({
     userId: user.id,
     displayName: options.displayName || 'Test User',
@@ -93,20 +95,18 @@ export async function createTestWifiNetwork(options: {
   unlockCost?: number;
 } = {}) {
   const [network] = await db.insert(wifiNetworks).values({
-    id: nanoid(),
+    bssid: `AA:BB:CC:DD:EE:${nanoid(2)}`,
     ssid: options.ssid || `TestNetwork_${nanoid(6)}`,
     latitude: options.latitude || 14.5995,
     longitude: options.longitude || 120.9842,
     h3Index: `test_h3_${nanoid(8)}`,
     hasPassword: options.hasPassword ?? true,
     unlockCost: options.unlockCost ?? 50,
-    freshnessScore: 100,
+    freshnessScore: 1.0,
     verificationScore: 0,
-    isActive: true,
-    isVerified: false,
   }).returning();
 
-  return network;
+  return network!;
 }
 
 /**

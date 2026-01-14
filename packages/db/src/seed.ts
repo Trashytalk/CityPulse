@@ -37,15 +37,13 @@ async function seed() {
   // Create achievements
   console.log('Creating achievements...');
   const achievementData = Object.entries(ACHIEVEMENT_DEFINITIONS).map(([code, def]) => ({
-    id: nanoid(),
-    code,
+    slug: code,
     name: def.name,
     description: `Unlock by reaching ${def.requirement} ${def.category}`,
     category: def.category,
-    xpReward: def.xp,
-    creditReward: def.credits,
-    requirement: def.requirement,
-    requirementType: def.category,
+    rewardXp: def.xp,
+    rewardCredits: def.credits,
+    requirement: { type: def.category, value: def.requirement },
     isHidden: false,
   }));
 
@@ -62,31 +60,25 @@ async function seed() {
 
   const challengeData = [
     {
-      id: nanoid(),
-      code: 'weekly_distance_10',
       name: 'Weekly Walker',
       description: 'Collect 10km this week',
       type: 'weekly' as const,
-      targetMetric: 'distance',
-      targetValue: 10,
-      xpReward: 100,
-      creditReward: 200,
-      cashReward: 0,
+      goal: { metric: 'distance', target: 10 },
+      rewardXp: 100,
+      rewardCredits: 200,
+      rewardCash: 0,
       startsAt: now,
       endsAt: weekEnd,
       isActive: true,
     },
     {
-      id: nanoid(),
-      code: 'weekly_sessions_5',
       name: 'Consistent Collector',
       description: 'Complete 5 sessions this week',
       type: 'weekly' as const,
-      targetMetric: 'sessions',
-      targetValue: 5,
-      xpReward: 75,
-      creditReward: 150,
-      cashReward: 0,
+      goal: { metric: 'sessions', target: 5 },
+      rewardXp: 75,
+      rewardCredits: 150,
+      rewardCash: 0,
       startsAt: now,
       endsAt: weekEnd,
       isActive: true,
@@ -152,18 +144,18 @@ async function seed() {
   // Create sample WiFi networks
   console.log('Creating sample WiFi networks...');
   const wifiSamples = [
-    { ssid: 'Starbucks_WiFi', lat: 14.5547, lng: 121.0244, venue: 'Starbucks BGC' },
-    { ssid: 'McDo_Free_WiFi', lat: 14.5565, lng: 121.0234, venue: "McDonald's" },
-    { ssid: 'SM_Guest', lat: 14.5894, lng: 121.0561, venue: 'SM Megamall' },
-    { ssid: 'Ayala_Mall_WiFi', lat: 14.5572, lng: 121.0196, venue: 'Ayala Triangle' },
-    { ssid: 'Grab_Kitchen_WiFi', lat: 14.5533, lng: 121.0489, venue: 'GrabFood Kitchen' },
-    { ssid: 'Jollibee_Guest', lat: 14.5612, lng: 121.0287, venue: 'Jollibee' },
+    { ssid: 'Starbucks_WiFi', lat: 14.5547, lng: 121.0244, venue: 'Starbucks BGC', bssid: 'AA:BB:CC:DD:EE:01' },
+    { ssid: 'McDo_Free_WiFi', lat: 14.5565, lng: 121.0234, venue: "McDonald's", bssid: 'AA:BB:CC:DD:EE:02' },
+    { ssid: 'SM_Guest', lat: 14.5894, lng: 121.0561, venue: 'SM Megamall', bssid: 'AA:BB:CC:DD:EE:03' },
+    { ssid: 'Ayala_Mall_WiFi', lat: 14.5572, lng: 121.0196, venue: 'Ayala Triangle', bssid: 'AA:BB:CC:DD:EE:04' },
+    { ssid: 'Grab_Kitchen_WiFi', lat: 14.5533, lng: 121.0489, venue: 'GrabFood Kitchen', bssid: 'AA:BB:CC:DD:EE:05' },
+    { ssid: 'Jollibee_Guest', lat: 14.5612, lng: 121.0287, venue: 'Jollibee', bssid: 'AA:BB:CC:DD:EE:06' },
   ];
 
   for (const wifi of wifiSamples) {
     await db.insert(wifiNetworks).values({
-      id: nanoid(),
       ssid: wifi.ssid,
+      bssid: wifi.bssid,
       latitude: wifi.lat,
       longitude: wifi.lng,
       h3Index: `h3_${wifi.lat.toFixed(2)}_${wifi.lng.toFixed(2)}`,
@@ -172,10 +164,8 @@ async function seed() {
       venueType: 'cafe',
       venueName: wifi.venue,
       unlockCost: 50,
-      freshnessScore: 85,
-      verificationScore: 70,
-      isVerified: true,
-      isActive: true,
+      freshnessScore: 0.85,
+      verificationScore: 0.70,
     }).onConflictDoNothing();
   }
 

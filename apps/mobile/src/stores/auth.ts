@@ -33,12 +33,16 @@ interface AuthState {
   refreshToken: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  phone: string | null;
   
   setUser: (user: User) => void;
   setTokens: (accessToken: string, refreshToken: string) => void;
   updateUser: (updates: Partial<User>) => void;
   logout: () => void;
   setLoading: (loading: boolean) => void;
+  setPhone: (phone: string) => void;
+  login: (user: User, accessToken: string, refreshToken: string) => void;
+  initialize: () => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -49,6 +53,7 @@ export const useAuthStore = create<AuthState>()(
       refreshToken: null,
       isAuthenticated: false,
       isLoading: true,
+      phone: null,
 
       setUser: (user) =>
         set({
@@ -76,10 +81,28 @@ export const useAuthStore = create<AuthState>()(
           refreshToken: null,
           isAuthenticated: false,
           isLoading: false,
+          phone: null,
         }),
 
       setLoading: (loading) =>
         set({ isLoading: loading }),
+
+      setPhone: (phone) =>
+        set({ phone }),
+
+      login: (user, accessToken, refreshToken) =>
+        set({
+          user,
+          accessToken,
+          refreshToken,
+          isAuthenticated: true,
+          isLoading: false,
+        }),
+
+      initialize: async () => {
+        // Zustand persist auto-hydrates, just mark as not loading
+        set({ isLoading: false });
+      },
     }),
     {
       name: 'citypulse-auth',

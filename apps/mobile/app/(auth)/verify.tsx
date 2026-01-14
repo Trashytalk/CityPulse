@@ -20,7 +20,7 @@ export default function VerifyScreen() {
   const verifyOtp = useMutation({
     mutationFn: (otp: string) => api.auth.verifyOtp(phone!, otp),
     onSuccess: (data) => {
-      login(data.accessToken, data.refreshToken, data.user);
+      login(data.user, data.accessToken, data.refreshToken);
       router.replace('/(tabs)');
     },
     onError: (err: any) => {

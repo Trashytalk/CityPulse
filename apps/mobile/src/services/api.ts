@@ -104,7 +104,7 @@ class ApiClient {
         }
       ),
 
-    verifyOtp: (phone: string, code: string, deviceId: string) =>
+    verifyOtp: (phone: string, code: string, deviceId?: string) =>
       this.request<{
         accessToken: string;
         refreshToken: string;
@@ -112,7 +112,7 @@ class ApiClient {
         isNewUser: boolean;
       }>('/api/v1/auth/verify-otp', {
         method: 'POST',
-        body: JSON.stringify({ phone, code, deviceId }),
+        body: JSON.stringify({ phone, code, deviceId: deviceId || 'mobile-app' }),
         authenticated: false,
       }),
 

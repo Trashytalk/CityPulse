@@ -1,6 +1,6 @@
 // apps/mobile/app/collection/[mode].tsx
 import { useMutation } from '@tanstack/react-query';
-import { Camera, CameraView } from 'expo-camera';
+import { Camera, CameraType } from 'expo-camera';
 import { LinearGradient } from 'expo-linear-gradient';
 import type * as Location from 'expo-location';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -21,7 +21,7 @@ import type { CollectionMode } from '../../src/stores/collection';
 export default function CollectionScreen() {
   const { mode } = useLocalSearchParams<{ mode: CollectionMode }>();
   const router = useRouter();
-  const cameraRef = useRef<CameraView>(null);
+  const cameraRef = useRef<Camera>(null);
   const appState = useRef(AppState.currentState);
   const locationSubscription = useRef<Location.LocationSubscription | null>(null);
 
@@ -232,10 +232,10 @@ export default function CollectionScreen() {
     <View className="flex-1 bg-gray-900">
       {/* Camera view for dashcam mode */}
       {mode === 'dashcam' && showCamera && (
-        <CameraView
+        <Camera
           ref={cameraRef}
           style={{ flex: 1 }}
-          facing="back"
+          type={CameraType.back}
         >
           {/* Camera overlay */}
           <View className="flex-1">
@@ -247,7 +247,7 @@ export default function CollectionScreen() {
               </Text>
             </View>
           </View>
-        </CameraView>
+        </Camera>
       )}
 
       {/* Stats overlay */}
