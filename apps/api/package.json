@@ -1,0 +1,46 @@
+{
+  "name": "@citypulse/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev src/index.ts --port 3000",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "deploy": "wrangler deploy",
+    "start": "node dist/index.js",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.490.0",
+    "@aws-sdk/s3-request-presigner": "^3.490.0",
+    "@citypulse/db": "workspace:*",
+    "@citypulse/shared": "workspace:*",
+    "@hono/node-server": "^1.8.0",
+    "@lucia-auth/adapter-drizzle": "^1.0.7",
+    "@sentry/node": "^7.100.0",
+    "bullmq": "^5.1.0",
+    "expo-server-sdk": "^3.7.0",
+    "h3-js": "^4.1.0",
+    "hono": "^4.0.0",
+    "ioredis": "^5.3.2",
+    "jose": "^5.2.0",
+    "lucia": "^3.0.0",
+    "otplib": "^12.0.1",
+    "twilio": "^4.20.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@citypulse/eslint-config": "workspace:*",
+    "@citypulse/typescript-config": "workspace:*",
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "@types/node": "^20.11.0",
+    "@vitest/coverage-v8": "^1.2.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0",
+    "wrangler": "^3.24.0"
+  }
+}

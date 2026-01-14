@@ -1,0 +1,10 @@
+name = "citypulse-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-15"
+
+[vars]
+NODE_ENV = "production"
+
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "citypulse-storage"

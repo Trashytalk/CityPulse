@@ -1,0 +1,28 @@
+# CityPulse ML Service - Requirements
+# Python 3.11
+
+# ML Framework
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Object Detection
+ultralytics>=8.0.0  # YOLOv8
+
+# Computer Vision
+opencv-python-headless>=4.8.0
+pillow>=10.0.0
+numpy>=1.24.0
+
+# OCR
+paddleocr>=2.7.0
+paddlepaddle>=2.5.0
+
+# Cloud Storage
+boto3>=1.28.0
+
+# Modal.com
+modal>=0.56.0
+
+# Utilities
+python-dotenv>=1.0.0
+httpx>=0.25.0

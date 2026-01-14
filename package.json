@@ -1,0 +1,48 @@
+{
+  "name": "citypulse",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.15.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    "db:generate": "pnpm --filter @citypulse/db generate",
+    "db:migrate": "pnpm --filter @citypulse/db migrate",
+    "db:push": "pnpm --filter @citypulse/db push",
+    "db:studio": "pnpm --filter @citypulse/db studio",
+    "db:seed": "pnpm --filter @citypulse/db seed",
+    "api:dev": "pnpm --filter @citypulse/api dev",
+    "web:dev": "pnpm --filter @citypulse/web dev",
+    "mobile:start": "pnpm --filter @citypulse/mobile start",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@citypulse/eslint-config": "workspace:*",
+    "@citypulse/typescript-config": "workspace:*",
+    "@types/node": "^20.11.0",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.3.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
