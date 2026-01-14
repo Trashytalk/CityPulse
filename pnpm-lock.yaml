@@ -58,7 +58,7 @@ importers:
         version: 0.2.2(hono@4.11.4)(zod@3.25.76)
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.0.7
-        version: 1.1.0(drizzle-orm@0.29.5)(lucia@3.2.2)
+        version: 1.1.0(drizzle-orm@0.30.10)(lucia@3.2.2)
       '@sentry/node':
         specifier: ^7.100.0
         version: 7.120.4
@@ -66,8 +66,8 @@ importers:
         specifier: ^5.1.0
         version: 5.66.5
       drizzle-orm:
-        specifier: ^0.29.0
-        version: 0.29.5(@cloudflare/workers-types@4.20260114.0)
+        specifier: ^0.30.0
+        version: 0.30.10(@cloudflare/workers-types@4.20260114.0)
       expo-server-sdk:
         specifier: ^3.7.0
         version: 3.15.0
@@ -4561,14 +4561,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.5.5
     dev: true
 
-  /@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.29.5)(lucia@3.2.2):
+  /@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.30.10)(lucia@3.2.2):
     resolution: {integrity: sha512-iCTnZWvfI5lLZOdUHZYiXA1jaspIFEeo2extLxQ3DjP3uOVys7IPwBi7zezLIRu9dhro4H4Kji+7gSYyjcef2A==}
     deprecated: This package has been deprecated. Please see https://lucia-auth.com/lucia-v3/migrate.
     peerDependencies:
       drizzle-orm: '>= 0.29 <1'
       lucia: 3.x
     dependencies:
-      drizzle-orm: 0.29.5(@cloudflare/workers-types@4.20260114.0)
+      drizzle-orm: 0.30.10(@cloudflare/workers-types@4.20260114.0)
       lucia: 3.2.2
     dev: false
 
@@ -9165,20 +9165,23 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.29.5(@cloudflare/workers-types@4.20260114.0):
-    resolution: {integrity: sha512-jS3+uyzTz4P0Y2CICx8FmRQ1eplURPaIMWDn/yq6k4ShRFj9V7vlJk67lSf2kyYPzQ60GkkNGXcJcwrxZ6QCRw==}
+  /drizzle-orm@0.30.10(@cloudflare/workers-types@4.20260114.0):
+    resolution: {integrity: sha512-IRy/QmMWw9lAQHpwbUh1b8fcn27S/a9zMIzqea1WNOxK9/4EB8gIo+FZWLiPXzl2n9ixGSv8BhsLZiOppWEwBw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
+      '@electric-sql/pglite': '>=0.1.1'
       '@libsql/client': '*'
       '@neondatabase/serverless': '>=0.1'
+      '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
       '@types/better-sqlite3': '*'
       '@types/pg': '*'
       '@types/react': '>=18'
       '@types/sql.js': '*'
-      '@vercel/postgres': '*'
+      '@vercel/postgres': '>=0.8.0'
+      '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
       expo-sqlite: '>=13.2.0'
@@ -9195,9 +9198,13 @@ packages:
         optional: true
       '@cloudflare/workers-types':
         optional: true
+      '@electric-sql/pglite':
+        optional: true
       '@libsql/client':
         optional: true
       '@neondatabase/serverless':
+        optional: true
+      '@op-engineering/op-sqlite':
         optional: true
       '@opentelemetry/api':
         optional: true
@@ -9212,6 +9219,8 @@ packages:
       '@types/sql.js':
         optional: true
       '@vercel/postgres':
+        optional: true
+      '@xata.io/client':
         optional: true
       better-sqlite3:
         optional: true
