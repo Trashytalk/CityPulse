@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@citypulse/shared'],
-  experimental: {
-    typedRoutes: true,
-  },
   images: {
     remotePatterns: [
       {
